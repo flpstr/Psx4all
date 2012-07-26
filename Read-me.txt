@@ -1,0 +1,147 @@
+psx4all for Dingoo A320 Linux (Dingux)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is a port of handheld PlayStation emulator psx4all to Linux for the
+Dingoo A320 (Dingux).
+
+It features MIPS to MIPS recompiling CPU emulation, and performance is
+acceptable, ranging from some 16-20 FPS in Gran Turismo to about 60 FPS in
+Tetris Plus (with some tweaks).
+
+Sound works in principle, but slows down emulation considerably, which is
+why I have not compiled it into the default build ("psx4all"). For those who
+want to try it, however, a version with a working SPU ("psx4all_sound") is
+provided as well.
+
+To use the emulator, simply drop it into a directory on your SD card and add
+"psx4all" to whatever launcher application you are using. It is possible to
+run games with the integrated high-level BIOS emulation, but compatibility
+is so-so. It is thus highly recommended to use a PlayStation BIOS image,
+which psx4all expects to be situated in the same directory and to be named
+"scph1001.bin".
+
+psx4all is able to use PlayStation games in BIN format (2352 byte raw
+sectors, file extension ".bin") and is also able to load files in the
+compressed CBIN format (file extension ".cbn"), which is very similar to the
+well-known CISO format, but uses a different sector size. A tool called
+"cbin" is supplied with the emulator that is able to convert BIN format
+images to CBN files. (Precompiled binaries are shipped for Mac OS X and
+Linux/i386; the source code should be trivial to compile on whatever system
+you are using; it only depends on zlib.)
+
+Memory cards are supported and need to be named mcd001.mcr and mcd002.mcr
+for Slot 1 and Slot 2, respectively. If these files do not exist, psx4all
+will create them.
+
+The emulator is controlled through a menu system. The cursor is moved with
+the Up and Down buttons, selections are made using the B button. The B
+button also toggles options. Numerical parameters can be changed using Left
+and Right. L always takes you back to the previous menu.
+
+Graphics Options
+~~~~~~~~~~~~~~~~
+I don't know the meaning of all these options either, so I will stick to
+those that I know and consider useful, or that I have added myself.
+
+Show FPS		whether or not to show the frame rate statstics on
+			top of the screen
+
+Frame Skip		Frameskipping can speed up emulation considerably,
+			but will lead to choppy graphics and in many cases
+			glitches. It is currently your best option to get
+			full-speed or near full-speed emulation on many
+			games, though. 2/3 frameskip appears to work best
+			for most cases. 1/2 almost always causes severe
+			problems.
+
+Cycle Multiplier	Increasing the cycle multiplier makes the emulated
+			PlayStation hardware run faster relative to its CPU.
+			This can help speed up games that don't use the CPU
+			much and mostly idle around waiting for the next
+			frame. In other cases, it will not make a
+			difference, or even make the game slower. Don't be
+			fooled by the increased frame rate! If the CPU is
+			too slow to keep up, a high frame rate will be of no
+			consequence.
+
+Frameskip: ....		These option allow you to fine-tune the
+			frameskipping behavior. When frameskipping causes
+			glitches you can turn it off for certain parts of
+			the graphics emulation instead of turning it off
+			completely.
+
+Wall Clock Timing	This option is experimental, and I'm not quite sure
+			if it is useful at all. It causes the hardware
+			timing to be based on real-world ("wall clock") time
+			instead of the cycle count of the emulated CPU. Its
+			effect and its problems are very similar to that of
+			the Cycle Multiplier option, but it locks the
+			framerate to what it would be in real life.
+
+Sound Options
+~~~~~~~~~~~~~
+The only option is to turn the sound on and off. And that only works in the
+SPU build ("psx4all_sound").
+
+File Options
+~~~~~~~~~~~~
+
+Save Game State		Freezes the emulated system and dumps its state into
+			a file that can be reloaded later. Files are named
+			after the game disc image, with a dash, a
+			four-figure counter and the extension ".svs" added.
+			Don't rename them, or psx4all won't know what disc
+			image to use when loading them.
+
+Load Game State		Restores a saved state.
+
+Load A Game		Boots a CD image via the original PlayStation BIOS.
+			BIN and CBN images are supported, plus a couple of
+			esoteric formats I have never heard of before.
+
+Load A Game Without BIOS Boots a CD image with high-level BIOS emulation
+			enabled. The compatibility is lower compared to
+			using the original BIOS, but indicated framerates
+			are higher. Games don't generally feel faster,
+			though, so that may well be a bug.
+
+In-emulation button assignment is as follows:
+
+PlayStation button	Dingoo button(s)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Left			Left
+Right			Right
+Up			Up
+Down			Down
+Triangle		X
+Square			Y
+Circle			A
+Cross			B
+Start			Start
+Select			Select + Start
+L1			L
+R1			R
+L2			Select + L
+R2			Select + R
+
+Function		Dingoo buttons
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return to Menu		Select + Y
+Quit			Select + X (press and hold)
+Increase Frameskip	Select + A
+Decrease Frameskip	Select + B
+Turn FPS display on	Select + Right
+Turn FPS display off	Select + Left
+
+Source code, Binary Releases, Changelog, and Bug Tracking
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+All of these can be found on the psx4all-dingoo page at github:
+
+http://github.com/uli/psx4all-dingoo/
+
+You can also download a Dingux toolchain for Mac OS X there, should you need
+one.
+
+Have a lot of fun!
+
+Ulrich Hecht
