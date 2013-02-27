@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  GPU internal line drawing functions
-#include "newGPU.h"
-#include "raster.h"
+#include "gpuAPI/newGPU/newGPU.h"
+#include "gpuAPI/newGPU/raster.h"
 
 /*
 void gpuDrawLF(void)

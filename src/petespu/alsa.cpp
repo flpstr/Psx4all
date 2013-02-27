@@ -27,11 +27,11 @@
 //
 //*************************************************************************//
 
-#include "stdafx.h"
+#include "petespu/stdafx.h"
 
 #define _IN_OSS
 
-#include "externals.h"
+#include "petespu/externals.h"
 
 #if !defined(__WIN32__) && !defined(GIZMONDO) && !defined(POCKETPC) 
 
@@ -55,7 +55,7 @@ unsigned long timeGetTime()
 ////////////////////////////////////////////////////////////////////////
 
 #define ALSA_MEM_DEF
-#include "alsa.h"
+#include "petespu/alsa.h"
 static snd_pcm_t *handle = NULL;
 static snd_pcm_uframes_t buffer_size;
 
@@ -110,11 +110,11 @@ void SetupSound(void)
    return;
   }
 
- if((err=snd_pcm_hw_params_set_format(handle, hwparams, format))<0)
+ /*if((err=snd_pcm_hw_params_set_format(handle, hwparams, format))<0)
   {
    printf("Sample format not available: %s\n", snd_strerror(err));
    return;
-  }
+  }*/
 
  if((err=snd_pcm_hw_params_set_channels(handle, hwparams, pchannels))<0)
   {
@@ -122,23 +122,23 @@ void SetupSound(void)
    return;
   }
 
- if((err=snd_pcm_hw_params_set_rate_near(handle, hwparams, &pspeed, 0))<0)
+/* if((err=snd_pcm_hw_params_set_rate_near(handle, hwparams, &pspeed, 0))<0)
   {
    printf("Rate not available: %s\n", snd_strerror(err));
    return;
   }
-
- if((err=snd_pcm_hw_params_set_buffer_time_near(handle, hwparams, &buffer_time, 0))<0)
+*/
+/* if((err=snd_pcm_hw_params_set_buffer_time_near(handle, hwparams, &buffer_time, 0))<0)
   {
    printf("Buffer time error: %s\n", snd_strerror(err));
    return;
   }
-
- if((err=snd_pcm_hw_params_set_period_time_near(handle, hwparams, &period_time, 0))<0)
+*/
+ /*if((err=snd_pcm_hw_params_set_period_time_near(handle, hwparams, &period_time, 0))<0)
   {
    printf("Period time error: %s\n", snd_strerror(err));
    return;
-  }
+  }*/
 
  if((err=snd_pcm_hw_params(handle, hwparams))<0)
   {

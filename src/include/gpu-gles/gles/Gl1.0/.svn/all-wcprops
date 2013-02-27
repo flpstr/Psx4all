@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/20/trunk/gpu-gles/gles/Gl1.0
+END
+gl.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/20/trunk/gpu-gles/gles/Gl1.0/gl.h
+END
+glext.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/20/trunk/gpu-gles/gles/Gl1.0/glext.h
+END
+glplatform.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/20/trunk/gpu-gles/gles/Gl1.0/glplatform.h
+END

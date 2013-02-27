@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  GPU internal image manipulation, load, store, move, clear
-#include "newGPU.h"
-#include "raster.h"
-#include "fixed.h"
+#include "gpuAPI/newGPU/newGPU.h"
+#include "gpuAPI/newGPU/raster.h"
+#include "gpuAPI/newGPU/fixed.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,5 @@
-#include "minimal.h"
+#include "sdl/minimal.h"
 #include "profiler.h"
-
 #ifdef PROFILER_PSX4ALL
 #include "timeval.h"
 #endif
@@ -30,6 +29,16 @@ int gp2x_double_buffer=0;
 #ifdef DEBUG
 FILE* fdbg;
 #endif
+
+//Backscreen
+#define SPLASH DATA_PREFIX "backscreen.bmp"
+
+void backg (){
+	SDL_Surface *img;
+	img = SDL_LoadBMP(SPLASH);
+	SDL_BlitSurface(img,0,sdlscreen,0);
+}
+//
 
 /* The font is generated from Xorg 6x10-L1.bdf */
 static unsigned char gp2x_fontf[256][10] = {
@@ -291,6 +300,7 @@ static unsigned char gp2x_fontf[256][10] = {
 { 0x00>>2, 0x50>>2, 0x00>>2, 0x88>>2, 0x88>>2, 0x98>>2, 0x68>>2, 0x08>>2, 0x88>>2, 0x70>>2, },
 };
 
+
 static gp2x_font gp2x_default_font;
 
 void (*gp2x_printfchar)(gp2x_font *f, unsigned char c);
@@ -326,7 +336,7 @@ void gp2x_printfchar15(gp2x_font *f, unsigned char c)
           }
           src++;
 
-          dst+=(sdlscreen->pitch>>1)-(f->w);
+         dst+=(sdlscreen->pitch>>1)-(f->w);
          }
 }
 
@@ -361,6 +371,8 @@ void gp2x_printf(gp2x_font *f, int x, int y, const char *format, ...)
 
  //gp2x_video_flip_single();
 }
+#include <SDL/SDL_image.h>
+SDL_Surface* screen_real;
 
 void gp2x_printf_init(gp2x_font *f, int w, int h, void *data, int fg, int bg, int solid)
 {
@@ -372,10 +384,9 @@ void gp2x_printf_init(gp2x_font *f, int w, int h, void *data, int fg, int bg, in
  f->data=(unsigned char *)data;
  f->fg=fg;
  f->bg=bg;
- f->solid=solid;
-}
+ //f->solid=solid;
 
-SDL_Surface* screen_real;
+}
 
 #include <sys/resource.h>
 #include <sys/time.h>
@@ -390,6 +401,7 @@ void gp2x_init(int ticks_per_second, int bpp, int rate, int bits, int stereo, in
         sprintf(df, "debug_%d.txt", (int)tv.tv_sec);
 	fdbg = fopen(df, "w");
 #else
+	static int ramtweaks=1;
 	fdbg = fopen("debug.txt", "w");
 #endif
 #endif
@@ -413,18 +425,18 @@ void gp2x_init(int ticks_per_second, int bpp, int rate, int bits, int stereo, in
 
 	if(SDL_MUSTLOCK(screen_real)) SDL_LockSurface(screen_real);
 #else
-	gp2x_sdlwrapper_screen = SDL_SetVideoMode(320, 240, 16, SDL_HWSURFACE | SDL_DOUBLEBUF);
-	if (!gp2x_sdlwrapper_screen) {
-		SDL_ShowCursor;
+
+	gp2x_sdlwrapper_screen = SDL_SetVideoMode(320, 240, 16, SDL_HWSURFACE | SDL_DOUBLEBUF  | SDL_INIT_AUDIO);
+		if (!gp2x_sdlwrapper_screen) {
 		DEBUGF("SDL_SetVideoMode failed: %s\n", SDL_GetError());
 		SDL_Quit();
 		exit(-1);
 	}
 #endif
-
+        
 	if(SDL_MUSTLOCK(sdlscreen)) SDL_LockSurface(sdlscreen);
 
-	SDL_WM_SetCaption("psx4all - SDL Version", "psx4all");
+	SDL_WM_SetCaption("Psx4all - SDL Version", "Psx4all");
 
 	if(gp2x_sdlwrapper_screen == NULL)
 	{
@@ -446,7 +458,6 @@ void gp2x_init(int ticks_per_second, int bpp, int rate, int bits, int stereo, in
 
 	//init font
 	gp2x_printf_init(&gp2x_default_font,6,10,gp2x_fontf,0xFFFF,0x0000,solid_font);
-
 	atexit(gp2x_deinit);
 }
 

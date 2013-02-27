@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  Inner loop driver instanciation file
-#include "newGPU.h"
+#include "gpuAPI/newGPU/newGPU.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Code generation "hints"
@@ -67,7 +67,7 @@ bool gpuInnerInit()
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Pixel drawing drivers, for lines (only blending)
-#include "inner_Pixel.h"
+#include "gpuAPI/newGPU/inner_Pixel.h"
 
 PF  gpuPixelDriver;
 PF  gpuPixelDrivers[16] =   //  We only generate pixel op for MASKING/BLEND_ENABLE/BLEND_MODE
@@ -81,7 +81,7 @@ PF  gpuPixelDrivers[16] =   //  We only generate pixel op for MASKING/BLEND_ENAB
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Sprite innerloops driver
-#include "inner_Sprite.h"
+#include "gpuAPI/newGPU/inner_Sprite.h"
 
 PF gpuSpriteSpanDriver;
 PF gpuSpriteSpanDrivers[128] = 
@@ -99,7 +99,7 @@ PF gpuSpriteSpanDrivers[128] =
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Poligon innerloops driver
-#include "inner_Poly.h"
+#include "gpuAPI/newGPU/inner_Poly.h"
 
 PF gpuPolySpanDriver;
 PF gpuPolySpanDrivers[256] =

@@ -33,7 +33,7 @@
 //
 //*************************************************************************//
 
-#include "stdafx.h"
+#include "petespu/stdafx.h"
 
 #define _IN_REVERB
 

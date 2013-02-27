@@ -379,9 +379,6 @@ int main(int argc, char *argv[])
 	int level;
 	int result;
 
-	fprintf(stderr, "Flpstr compressor V.1.0b\n");
-	fprintf(stderr, "Based in cbin converter\n");
-
 	if (argc != 4)
 	{
 		fprintf(stderr, "Usage: cbin level infile outfile\n");

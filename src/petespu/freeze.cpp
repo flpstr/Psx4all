@@ -33,14 +33,14 @@
 //
 //*************************************************************************//
 
-#include "stdafx.h"
+#include "petespu/stdafx.h"
 
 #define _IN_FREEZE
 
-#include "externals.h"
-#include "registers.h"
-#include "spu.h"
-#include "regs.h"
+#include "petespu/externals.h"
+#include "petespu/registers.h"
+#include "petespu/spu.h"
+#include "petespu/regs.h"
 
 ////////////////////////////////////////////////////////////////////////
 // freeze structs

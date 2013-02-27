@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  GPU inicialization/deinicialization functions
-#include "newGPU.h"
-#include "fixed.h"
+#include "gpuAPI/newGPU/newGPU.h"
+#include "gpuAPI/newGPU/fixed.h"
 
 #if defined(PSP) || defined(DREAMCAST)
 #include "string.h"

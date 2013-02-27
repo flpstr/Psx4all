@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  GPU internal poligon drawing functions
-#include "newGPU.h"
-#include "raster.h"
+#include "gpuAPI/newGPU/newGPU.h"
+#include "gpuAPI/newGPU/raster.h"
 
 /*
 #define xInv      xInv_fake

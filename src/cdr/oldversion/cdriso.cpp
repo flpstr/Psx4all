@@ -10,7 +10,7 @@
 
 #include <zlib.h>
 
-#include "cdriso.h"
+#include "cdr/oldversion/cdriso.h"
 
 extern s8* packfile;
 

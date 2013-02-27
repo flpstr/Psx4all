@@ -37,14 +37,14 @@
 //
 //*************************************************************************//
 
-#include "stdafx.h"
+#include "petespu/stdafx.h"
 
 #define _IN_REGISTERS
 
-#include "externals.h"
-#include "registers.h"
-#include "regs.h"
-#include "reverb.h"
+#include "petespu/externals.h"
+#include "petespu/registers.h"
+#include "petespu/regs.h"
+#include "petespu/reverb.h"
 
 /*
 // adsr time values (in ms) by James Higgs ... see the end of

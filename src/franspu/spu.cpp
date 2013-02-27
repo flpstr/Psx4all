@@ -1,5 +1,5 @@
 #include "spu.h"
-#include <minimal.h>
+#include <sdl/minimal.h>
 
 
 extern void SoundFeedStreamData(unsigned char* pSound,long lBytes);
@@ -41,11 +41,11 @@ int iFMod[NSSIZE];
 short * pS;
 
 // dirty inline func includes
-#include "spu_adsr.h"
-#include "spu_xa.h"
+#include "franspu/spu_adsr.h"
+#include "franspu/spu_xa.h"
 
 // START SOUND... called by main thread to setup a new sound on a channel
-INLINE void StartSound(SPUCHAN * pChannel)
+inline void StartSound(SPUCHAN * pChannel)
 {
  	pChannel->ADSRX.lVolume=1;                            // Start ADSR
  	pChannel->ADSRX.State=0;
@@ -63,14 +63,14 @@ INLINE void StartSound(SPUCHAN * pChannel)
  	pChannel->SB[31]=0;    				// -> no/simple interpolation starts with one 44100 decoding
 }
 
-INLINE void VoiceChangeFrequency(SPUCHAN * pChannel)
+inline void VoiceChangeFrequency(SPUCHAN * pChannel)
 {
  	pChannel->iUsedFreq=pChannel->iActFreq;               // -> take it and calc steps
  	pChannel->sinc=pChannel->iRawPitch<<4;
  	if(!pChannel->sinc) pChannel->sinc=1;
 }
 
-INLINE void FModChangeFrequency(SPUCHAN * pChannel,int ns)
+inline void FModChangeFrequency(SPUCHAN * pChannel,int ns)
 {
  	int NP=pChannel->iRawPitch;
  	NP=((32768L+iFMod[ns])*NP)/32768L;
@@ -85,8 +85,10 @@ INLINE void FModChangeFrequency(SPUCHAN * pChannel,int ns)
 }                    
 
 // noise handler... just produces some noise data
-INLINE int iGetNoiseVal(SPUCHAN * pChannel)
+inline int iGetNoiseVal(SPUCHAN * pChannel)
 {
+/*
+// wtf ???
  	int fa;
  	if((dwNoiseVal<<=1)&0x80000000L)
   	{
@@ -102,10 +104,11 @@ INLINE int iGetNoiseVal(SPUCHAN * pChannel)
  	if(fa<-32767L) fa=-32767L;              
  	pChannel->iOldNoise=fa;
  	pChannel->SB[29] = fa;                               // -> store noise val in "current sample" slot
- 	return fa;
+	*/
+ 	return 0;
 }                                 
 
-INLINE void StoreInterpolationVal(SPUCHAN * pChannel,int fa)
+inline void StoreInterpolationVal(SPUCHAN * pChannel,int fa)
 {
  	if(pChannel->bFMod==2)                                	// fmod freq channel
   		pChannel->SB[29]=fa;
@@ -123,8 +126,9 @@ INLINE void StoreInterpolationVal(SPUCHAN * pChannel,int fa)
 }
 
 // here is the main job handler... direct func call (calculates 1 msec of sound)
-INLINE void SPU_async_1ms(SPUCHAN * pChannel,int *SSumL, int *SSumR, int *iFMod)
+inline void SPU_async_1ms(SPUCHAN * pChannel,int *SSumL, int *SSumR, int *iFMod)
 {
+
 	int ch;			// Channel loop
 	int ns; 		// Samples loop
 	unsigned int i; 	// Internal loop
@@ -208,7 +212,7 @@ INLINE void SPU_async_1ms(SPUCHAN * pChannel,int *SSumL, int *SSumR, int *iFMod)
           		}
 
          		if(pChannel->bNoise)
-              			fa=iGetNoiseVal(pChannel);               // get noise val
+              			fa=0;
          		else 
          			fa=pChannel->SB[29];       		// get interpolation val
 
@@ -244,6 +248,7 @@ void SPU_async(unsigned long cycle)
  	if( iSoundMuted > 0 ) return;
 	int i;
 	int t=(cycle?20:16); /* cycle 0=NTSC 16 ms, 1=PAL 20 ms */
+
  	for (i=0;i<t;i++)
  		SPU_async_1ms(s_chan,SSumL,SSumR,iFMod); // Calculates 1 ms of sound
         SoundFeedStreamData((unsigned char*)pSpuBuffer,((unsigned char *)pS)-((unsigned char *)pSpuBuffer));

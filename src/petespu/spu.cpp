@@ -92,10 +92,10 @@
 //
 //*************************************************************************//
 
-#include <minimal.h>
+#include "sdl/minimal.h"
 
 #include "gui.h"
-#include "stdafx.h"
+#include "petespu/stdafx.h"
 
 unsigned long SoundGetBytesBuffered(void);
 
@@ -108,8 +108,8 @@ void SetupSound(void);
 void RemoveSound(void);
 
 #define _IN_SPU
-#include "externals.h"
-#include "regs.h"
+#include "petespu/externals.h"
+#include "petespu/regs.h"
  
 ////////////////////////////////////////////////////////////////////////
 // spu version infos/name
@@ -335,7 +335,7 @@ INLINE void InterpolateDown(SPUCHAN * pChannel)
 #define gval0 (((short*)(&pChannel->SB[29]))[gpos])
 #define gval(x) (((short*)(&pChannel->SB[29]))[(gpos+x)&3])
 
-#include "gauss_i.h"
+#include "petespu/gauss_i.h"
 
 ////////////////////////////////////////////////////////////////////////
 

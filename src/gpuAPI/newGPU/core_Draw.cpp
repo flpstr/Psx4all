@@ -1,11 +1,11 @@
-#include "newGPU.h"
-#include "minimal.h"
+#include "gpuAPI/newGPU/newGPU.h"
+#include "sdl/minimal.h"
 
 u16 bgr2rgb[65536];
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "raster.h"
-#include "inner_Blit.h"
+#include "gpuAPI/newGPU/raster.h"
+#include "gpuAPI/newGPU/inner_Blit.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 void clutInit()

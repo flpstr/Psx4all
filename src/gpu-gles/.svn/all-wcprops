@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/21/trunk/gpu-gles
+END
+gpuDraw.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/20/trunk/gpu-gles/gpuDraw.h
+END
+gpuPlugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/20/trunk/gpu-gles/gpuPlugin.h
+END
+gpuTexture.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/14/trunk/gpu-gles/gpuTexture.h
+END
+gpuPrim.c
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/20/trunk/gpu-gles/gpuPrim.c
+END
+gpuFps.c
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/14/trunk/gpu-gles/gpuFps.c
+END
+gpuExternals.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/20/trunk/gpu-gles/gpuExternals.h
+END
+gpuPrim.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/16/trunk/gpu-gles/gpuPrim.h
+END
+gpuFps.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/14/trunk/gpu-gles/gpuFps.h
+END
+gpuDraw.c
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/21/trunk/gpu-gles/gpuDraw.c
+END
+gpuStdafx.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/20/trunk/gpu-gles/gpuStdafx.h
+END
+gpuPlugin.c
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/20/trunk/gpu-gles/gpuPlugin.c
+END
+gpuTexture.c
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/20/trunk/gpu-gles/gpuTexture.c
+END

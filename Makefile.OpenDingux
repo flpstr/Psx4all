@@ -16,13 +16,13 @@ ifdef DESKTOP
   LDFLAGS= `sdl-config --libs` -lz
   MACHINE_CFLAGS = -O2 -m32
 else
-  CC = mipsel-linux-cc
-  CXX = mipsel-linux-c++
-  AS = mipsel-linux-as
-  STRIP = mipsel-linux-strip
-  INC = /opt/opendingux-toolchain/usr/include
+  CC = mipsel-gcw0-linux-uclibc-cc
+  CXX = mipsel-gcw0-linux-uclibc--c++
+  AS = mipsel-gcw0-linux-uclibc-as
+  STRIP = mipsel-gcw0-linux-uclibc-strip
+  INC = /opt/gcw0-toolchain/usr/include
   INCS = ${INC} -I${INC}/SDL
-  LD = mipsel-linux-c++
+  LD = mipsel-gcw0-linux-uclibc-c++
   LDFLAGS = -lSDL -lz -pthread -Wl,--gc-sections
   MACHINE_CFLAGS = -O2 -fomit-frame-pointer -ffunction-sections -ffast-math -fsingle-precision-constant -mbranch-likely
 endif

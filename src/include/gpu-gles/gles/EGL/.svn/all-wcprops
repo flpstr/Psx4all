@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/20/trunk/gpu-gles/gles/EGL
+END
+eglplatform.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/20/trunk/gpu-gles/gles/EGL/eglplatform.h
+END
+egl.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/20/trunk/gpu-gles/gles/EGL/egl.h
+END
+eglext.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/20/trunk/gpu-gles/gles/EGL/eglext.h
+END
